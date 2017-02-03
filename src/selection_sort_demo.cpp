@@ -19,7 +19,7 @@ int main()
 	}
 	std::cout << std::endl;
 
-	selection_sort(v.begin(), v.end());
+	base::selection::sort(v.begin(), v.end());
 
 	for (auto &i : v) {
 		std::cout << i << " ";

@@ -1,25 +1,21 @@
 #include <algorithm>
+#include <functional>
 
+namespace base {
+namespace selection {
 
-// template <typename Iterator>
-// void selection_sort(Iterator begin, Iterator end)
-// {
-// 	for (auto i = begin; i != end; ++i) {
-// 		std::iter_swap(i, std::min_element(i, end));
-// 	}
-// }
-
-
-template <typename Iterator>
-void selection_sort(Iterator begin, Iterator end)
-{
-	for (auto i = begin; i != end; ++i) {
-		auto min = i;
-		for (auto j = i + 1; j != end; ++j) {
-			if (*j < *min) {
-				min = j;
+	template <typename Iterator, typename Compare = std::less<>>
+	void sort(Iterator begin, Iterator end, Compare comp = Compare())
+	{
+		for (auto i = begin; i != end; ++i) {
+			auto min = i;
+			for (auto j = i + 1; j != end; ++j) {
+				if (comp(*j, *min)) {
+					min = j;
+				}
 			}
+			std::swap(*min, *i);
 		}
-		std::swap(*min, *i);
 	}
+}
 }
