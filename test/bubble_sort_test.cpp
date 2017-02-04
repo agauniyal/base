@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include "selection_sort.hpp"
+#include "bubble_sort.hpp"
 #include <random>
 #include <functional>
 
-TEST(selection_sort, ascending)
+TEST(bubble_sort, ascending)
 {
 	std::random_device rnd_device;
 	std::mt19937 m_engine(rnd_device());
@@ -14,14 +14,14 @@ TEST(selection_sort, ascending)
 	std::generate(v1.begin(), v1.end(), gen);
 	auto v2 = v1;
 
-	base::selection::sort(v1.begin(), v1.end());
+	base::bubble::sort(v1.begin(), v1.end());
 	std::sort(v2.begin(), v2.end());
 
 	ASSERT_EQ(v1, v2);
 }
 
 
-TEST(selection_sort, descending)
+TEST(bubble_sort, descending)
 {
 	std::random_device rnd_device;
 	std::mt19937 m_engine(rnd_device());
@@ -34,7 +34,7 @@ TEST(selection_sort, descending)
 
 	auto desc = [](auto a, auto b) { return a > b; };
 
-	base::selection::sort(v1.begin(), v1.end(), desc);
+	base::bubble::sort(v1.begin(), v1.end(), desc);
 	std::sort(v2.begin(), v2.end(), desc);
 
 	ASSERT_EQ(v1, v2);
