@@ -7,6 +7,8 @@ namespace insertion {
 	template <typename Iterator, typename Compare = std::less<>>
 	void sort(Iterator begin, Iterator end, Compare comp = Compare())
 	{
+		if (begin == end || (begin + 1) == end) return;
+
 		for (auto i = begin + 1; i != end; ++i) {
 			auto key = *i;
 			auto j   = i - 1;
