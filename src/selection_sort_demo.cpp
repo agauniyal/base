@@ -8,7 +8,7 @@ int main()
 {
 	std::random_device rnd_device;
 	std::mt19937 m_engine(rnd_device());
-	std::uniform_int_distribution<int> dist(1, 52);
+	std::uniform_int_distribution<int> dist(1, 1000);
 	auto gen = std::bind(dist, m_engine);
 
 	std::vector<int> v(10);

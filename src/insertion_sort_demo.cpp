@@ -1,4 +1,4 @@
-#include "bubble_sort.hpp"
+#include "insertion_sort.hpp"
 #include <vector>
 #include <iostream>
 #include <random>
@@ -19,7 +19,7 @@ int main()
 	}
 	std::cout << std::endl;
 
-	base::bubble::sort(v.begin(), v.end());
+	base::insertion::sort(v.begin(), v.end());
 
 	for (auto &i : v) {
 		std::cout << i << " ";
