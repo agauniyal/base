@@ -14,21 +14,21 @@ namespace merge {
 		left.reserve(mid - begin);
 		right.reserve(end - mid);
 
-		std::copy(begin, mid, std::back_inserter(left));
-		std::copy(mid, end, std::back_inserter(right));
+		std::move(begin, mid, std::back_inserter(left));
+		std::move(mid, end, std::back_inserter(right));
 
 		size_t j = 0, k = 0;
 		auto i = begin;
 		for (; i != end && j < left.size() && k < right.size(); ++i) {
-			*i = comp(left[j], right[k]) ? left[j++] : right[k++];
+			*i = std::move(comp(left[j], right[k]) ? left[j++] : right[k++]);
 		}
 
 		while (j < left.size()) {
-			*(i++) = left[j++];
+			*(i++) = std::move(left[j++]);
 		}
 
 		while (k < right.size()) {
-			*(i++) = right[k++];
+			*(i++) = std::move(right[k++]);
 		}
 	}
 
